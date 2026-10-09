@@ -1,131 +1,28 @@
-<html>
-    <head>
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@latest?dev",
-          "react-dom/client": "https://esm.sh/react-dom@latest/client?dev",
-          "react/jsx-runtime": "https://esm.sh/react@latest/jsx-runtime?dev"
-        }
-      }
-    </script>
-    <script src="https://unpkg.com/@babel/standalone@latest/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="text/babel" data-type="module" data-presets="react">
-        import React from 'react';
-        import { createRoot } from 'react-dom/client';
-        
-        const domNode = document.getElementById('app');
-
-        // function Header(props) {
-        //     console.log(props);
-        //     return <h1>Develop. Preview. Ship.</h1>;
-        // }
-
-        // function Header({ title }) {
-        //     console.log(title); // "React"
-        //     return <h1>Develop. Preview. Ship.</h1>;
-        // }
-
-        // function Header({ title }) {
-        //     console.log(title);
-        //     return <h1>title</h1>;
-        // }
-
-        // function Header({ title }) {
-        //     console.log(title);
-        //     return <h1>{title}</h1>;
-        // }
-
-        // function Header({ title }) {
-        //     return <h1>{`Cool ${title}`}</h1>;
-        // }
-
-        // function Header(props) {
-        //     return <h1>{props.title}</h1>;
-        // }
-
-        // function createTitle(title) {
-        //     if (title) {
-        //         return title;
-        //     } else {
-        //         return 'Default title';
-        //     }
-        //     }
-            
-        //     function Header({ title }) {
-        //     return <h1>{createTitle(title)}</h1>;
-        // }
-
-        function Header({ title }) {
-            return <h1>{title ? title : 'Default Title'}</h1>;
-        }
-
-        function HomePage() {
-        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
-
-        const [] = React.useState();
-        const [likes, setLikes] = React.useState(0); 
-
-        function handleClick() {
-            setLikes(likes + 1);
-            console.log("increment like count")
-        }
-        
-        return (
-            <div>
-            <Header title="Develop. Preview. Ship." />
-            <ul>
-                {names.map((name) => (
-                <li key={name}>{name}</li>
-                ))}
-            </ul>
-            <button onClick={handleClick}>Like({likes})</button>
-            </div>
-        );
-        }
-
-        const root = createRoot(domNode);
-        // root.render(<h1>Develop. Preview. Ship.</h1>);
-
-        root.render(<Header />);
-        root.render(<HomePage />);
-    </script>
-    <script type="text/javascript">
-        const app = document.getElementById('app');
-        const header = document.createElement('h1');
-        const text = 'Develop. Preview. Ship.';
-        const headerContent = document.createTextNode(text);
-        header.appendChild(headerContent);
-        app.appendChild(header);
-    </script>
-    <!-- <script type="text/babel" data-type="module" data-presets="react">
-      import React from 'react';
-      import { createRoot } from 'react-dom/client';
+import { useState } from 'react';
  
-      const domNode = document.getElementById('app');
-      const root = createRoot(domNode);
-      root.render(<h1>Develop. Preview. Ship.</h1>);
-    </script> -->
-    
-    <!-- <script type="text/javascript">
-        // Select the div element width 'app' id
-        const app = document.getElementById('app');
-
-        // Create a new h1 element
-        const header = document.createElement('h1');
-
-        // Create a new text node for the H1 element
-        const text = "Develop. Preview. Ship.";
-        const headerContent = document.createTextNode(text);
-
-        // Append the text node to the H1 element
-        header.appendChild(headerContent);
-
-        // Place the H1 element inside the div with 'app' id
-        app.appendChild(header);
-    </script> -->
-  </body>
-</html>
+function Header({ title }) {
+  return <h1>{title ? title : 'Default title'}</h1>;
+}
+ 
+function HomePage() {
+  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+ 
+  const [likes, setLikes] = useState(0);
+ 
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+ 
+  return (
+    <div>
+      <Header title="Develop. Preview. Ship." />
+      <ul>
+        {names.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+ 
+      <button onClick={handleClick}>Like ({likes})</button>
+    </div>
+  );
+}
