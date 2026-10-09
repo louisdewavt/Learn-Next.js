@@ -19,17 +19,63 @@
         
         const domNode = document.getElementById('app');
 
-        function Header() {
-            return <h1>Develop. Preview. Ship.</h1>;
+        // function Header(props) {
+        //     console.log(props);
+        //     return <h1>Develop. Preview. Ship.</h1>;
+        // }
+
+        // function Header({ title }) {
+        //     console.log(title); // "React"
+        //     return <h1>Develop. Preview. Ship.</h1>;
+        // }
+
+        // function Header({ title }) {
+        //     console.log(title);
+        //     return <h1>title</h1>;
+        // }
+
+        // function Header({ title }) {
+        //     console.log(title);
+        //     return <h1>{title}</h1>;
+        // }
+
+        // function Header({ title }) {
+        //     return <h1>{`Cool ${title}`}</h1>;
+        // }
+
+        // function Header(props) {
+        //     return <h1>{props.title}</h1>;
+        // }
+
+        // function createTitle(title) {
+        //     if (title) {
+        //         return title;
+        //     } else {
+        //         return 'Default title';
+        //     }
+        //     }
+            
+        //     function Header({ title }) {
+        //     return <h1>{createTitle(title)}</h1>;
+        // }
+
+        function Header({ title }) {
+            return <h1>{title ? title : 'Default Title'}</h1>;
         }
 
          function HomePage() {
-            return (
-                <div>
-                {/* Nesting the Header component */}
-                <Header />
-                </div>
-            );
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        
+        return (
+            <div>
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+                {names.map((name) => (
+                <li key={name}>{name}</li>
+                ))}
+            </ul>
+            </div>
+        );
         }
 
         const root = createRoot(domNode);
